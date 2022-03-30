@@ -62,10 +62,11 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
+            "port": 4210,
             "browserTarget": "APM:build"
           },
           "configurations": {
-            "production": {
+            "production": {              
               "browserTarget": "APM:build:production"
             }
           }
@@ -121,5 +122,8 @@
       }
     }
   },
-  "defaultProject": "APM"
+  "defaultProject": "APM",
+  "cli": {
+    "analytics": "6690e64b-6f74-481c-9e8f-51069dbf8db4"
+  }
 }

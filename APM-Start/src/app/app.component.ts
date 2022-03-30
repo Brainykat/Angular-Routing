@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-
+import { Router } from '@angular/router';
 import { AuthService } from './user/auth.service';
 
 @Component({
@@ -21,10 +21,12 @@ export class AppComponent {
     return '';
   }
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService,
+    private router:Router) { }
 
   logOut(): void {
     this.authService.logout();
-    console.log('Log out');
+    //This removes all route parameters
+    this.router.navigateByUrl('/welcome');
   }
 }
