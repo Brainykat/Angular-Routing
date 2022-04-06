@@ -15,17 +15,12 @@ export class ProductDetailComponent implements OnInit {
 
   constructor(private productService: ProductService,
     private activatedRoute: ActivatedRoute) { }
+
   ngOnInit(): void {
-    const id = +this.activatedRoute.snapshot.paramMap.get('id');
-    this.getProduct(id);
+    this.onProductRetrieved(this.activatedRoute.snapshot.data['product']);
   }
 
-  getProduct(id: number): void {
-    this.productService.getProduct(id).subscribe({
-      next: product => this.onProductRetrieved(product),
-      error: err => this.errorMessage = err
-    });
-  }
+  
 
   onProductRetrieved(product: Product): void {
     this.product = product;
