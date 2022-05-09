@@ -17,7 +17,7 @@ export const Routes : Route[]= [
             {path: 'welcome', component: WelcomeComponent},
             {path: '', pathMatch : 'full', redirectTo: 'welcome'},
             {path:'**',component:PageNotFoundComponent}
-          ])
+          ]) //, {enableTracing:true}
     ],
     exports:[RouterModule]
 })
