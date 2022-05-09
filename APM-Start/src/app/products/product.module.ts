@@ -7,6 +7,7 @@ import { ProductEditComponent } from './product-edit/product-edit.component';
 import { ProductResolver } from './product.resolver';
 import { ProductEditInfoComponent } from './product-edit/product-edit-info.component';
 import { ProductEditTagsComponent } from './product-edit/product-edit-tags.component';
+import { ProductEditGuard } from './product-edit/product-edit.guard';
 import { SharedModule } from '../shared/shared.module';
 import {AuthGuard} from '../user/auth.guard';
 
@@ -25,6 +26,7 @@ import {AuthGuard} from '../user/auth.guard';
           {
             path:':id/edit', 
             component:ProductEditComponent, 
+            canDeactivate:[ProductEditGuard],
             resolve: {product:ProductResolver},
             children:[
               {

@@ -14,8 +14,24 @@ export class ProductEditComponent implements OnInit {
   pageTitle = 'Product Edit';
   errorMessage: string;
 
-  product: Product;
+  //product: Product;
   private dataIsValid:{[key:string]:boolean} = {};
+
+  get isDirty():boolean{
+    return JSON.stringify(this.originalProduct) !== JSON.stringify(this.currentProduct);
+  }
+  private currentProduct:Product;
+  private originalProduct:Product;
+
+  get product():Product{
+    return this.currentProduct;
+  }
+  set product(value:Product){
+    this.currentProduct = value;
+    //Clone the object to retain a copy (spread operator)
+    this.originalProduct = {...value};
+  }
+
 
   constructor(private productService: ProductService,
               private messageService: MessageService,
